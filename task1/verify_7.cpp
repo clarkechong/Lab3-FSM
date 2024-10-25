@@ -61,6 +61,7 @@ TEST_F(TestDut, InitialStateTest)
 {
     top->rst = 1;
     runSimulation();
+    runSimulation();
     EXPECT_EQ(top->data_out, 0b0001);
 }
 
@@ -88,6 +89,7 @@ TEST_F(TestDut, SequenceTest)
     top->rst = 1;
     runSimulation();
     top->rst = 0;
+    runSimulation();
     int exp = 0b000'0001;
 
     for (int i = 0; i < pow(2, 7); i++)

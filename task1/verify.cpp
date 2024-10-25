@@ -38,6 +38,7 @@ public:
     {
         for (int clk = 0; clk < 2; clk++)
         {
+            // printf("evaluate at %d\n", clk);
             top->eval();
             tfp->dump(2 * ticks + clk);
             top->clk = !top->clk;
@@ -60,14 +61,16 @@ TEST_F(TestDut, InitialStateTest)
 {
     top->rst = 1;
     runSimulation();
+    top->rst = 0;
+    runSimulation();
     EXPECT_EQ(top->data_out, 0b0001);
 }
 
 TEST_F(TestDut, SequenceTest)
 {
-    top->rst = 1;
-    runSimulation();
     top->rst = 0;
+    runSimulation();
+    runSimulation();
 
     std::vector<int> expected = {
         0b0001,
