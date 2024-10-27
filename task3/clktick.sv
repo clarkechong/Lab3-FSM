@@ -5,7 +5,7 @@ module clktick #(
   input  logic             clk,      // clock 
   input  logic             rst,      // reset
   input  logic             en,       // enable signal
-  input  logic [WIDTH-1:0] N,     	 // clock divided by N+1
+  input  logic [WIDTH-1:0] N,     	 // clock divided by N+1 --> scale clock rate by 1/(N+1)
   output logic  		   tick      // tick output
 );
 
